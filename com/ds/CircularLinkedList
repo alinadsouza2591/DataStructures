@@ -87,6 +87,26 @@ public class CircularLinkedList
         return head;
     }
     
+    //check if the linkedlist id circular
+    static boolean isCircular(Node head){
+        //an empty linkedlist is circular
+        if(head==null)
+            return true;
+        
+        //next of head
+        Node node = head.next;
+        
+        //This loop would stop in both cases 
+        //(i) id circular
+        //(ii) not circular
+        while(node != null && node != head) {
+            node = node.next;
+        }
+        
+        return node==head;
+        
+    }
+    
 	public static void main(String[] args) {
 	    
 	    Node head = null;
@@ -103,5 +123,7 @@ public class CircularLinkedList
 		head = deleteNode(head,12);
 
 		printList(head);
+		System.out.println("======================");
+		System.out.println(isCircular(head));
 	}
 }
