@@ -107,6 +107,19 @@ public class CircularLinkedList
         
     }
     
+	//function to count the nodes 
+    static int countNodes(Node node) {
+        Node temp = node;
+        int result = 0;
+        do {
+            temp = temp.next;
+            result++;
+        } while(temp != node);
+        
+        return result;
+        
+    }
+    
 	public static void main(String[] args) {
 	    
 	    Node head = null;
@@ -118,12 +131,16 @@ public class CircularLinkedList
 	    
 	    System.out.println("circular linkedlist");
 		printList(head);
-
+		
 		System.out.println("======================");
 		head = deleteNode(head,12);
-
+		
 		printList(head);
+		
 		System.out.println("======================");
 		System.out.println(isCircular(head));
+		
+		System.out.println("======================");
+		System.out.println(countNodes(head));
 	}
 }
