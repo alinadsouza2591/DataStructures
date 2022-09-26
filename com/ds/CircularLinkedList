@@ -39,9 +39,52 @@ public class CircularLinkedList
                 System.out.println(temp.data + " ");
                 temp = temp.next;
             } while(temp != head);
+        }        
+    }
+    
+    //function to delete the Node
+    static Node deleteNode(Node head, int key) {
+        
+        //if no data is avialable
+        if(head == null)
+            return null;
+            
+        Node curr = head;
+        Node prev = new Node();
+        
+        while(curr.data != key){
+            if(curr.next == head) {
+                System.out.println("Given Node is not found in the list!!!");
+                break;
+            }
+            
+            prev = curr;
+            curr = curr.next;
         }
         
+        //check if there is only Node
+        if(curr == head && curr.next==head){
+            head = null;
+            return head;
+        }
         
+        //If more than one Nod
+        //check if it is first Node
+        if(curr == head){
+            prev = head;
+            while(prev.next!=head)
+                prev = prev.next;
+            head = curr.next;
+            prev.next = head;
+        } 
+        
+        //check if it is last Node
+        if(curr.next == head){
+            prev.next = head;
+        } else {
+            prev.next = curr.next;
+        }
+        return head;
     }
     
 	public static void main(String[] args) {
@@ -54,6 +97,11 @@ public class CircularLinkedList
 	    head = push(head,11);
 	    
 	    System.out.println("circular linkedlist");
+		printList(head);
+
+		System.out.println("======================");
+		head = deleteNode(head,12);
+
 		printList(head);
 	}
 }
