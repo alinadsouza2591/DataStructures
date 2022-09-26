@@ -1,0 +1,67 @@
+package com.ds;
+
+public class ConvertLinkedListtoCircularlinkedList
+{
+    static class Node {
+        int data;
+        Node next;
+    }
+    
+    //push the value at the first location
+    static Node push(Node head,int newData) {
+        Node newNode = new Node();
+        newNode.data = newData;
+        newNode.next = head;
+        head = newNode;
+        return head;
+    }
+    
+    static Node circular(Node head) {
+        
+        Node start = head;
+        
+        while(head.next!=null){
+            head = head.next;
+        }
+        
+        head.next = start;
+        
+        return head;
+    }
+    
+    // Function that display the elements 
+    // of circular linked list.
+    static void displayList( Node node)
+    {
+        Node start = node;
+      
+      while (node.next != start)
+        {
+            System.out.print(" "+ node.data);
+            node = node.next;
+        }
+          
+        // Display the last node of  
+        // circular linked list.
+        System.out.print(" " + node.data);
+    }
+        
+	public static void main(String[] args) {
+	    
+	    Node head = null;
+	    
+	    head = push(head,12);
+	    head = push(head,56);
+	    head = push(head,2);
+	    head = push(head,11);
+	    
+	     // Call the circular_list function 
+        // that convert singly linked 
+        // list to circular linked list.
+        head = circular(head);
+	    
+	    System.out.println("circular linkedlist");
+		displayList(head);
+	
+	}
+}
